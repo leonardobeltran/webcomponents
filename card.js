@@ -13,11 +13,21 @@ export class WCCard extends HTMLElement {
 	    if (name === 'header-title' && oldValue !== newValue) {
 	      this.setHeadTitle(newValue);
 	    }
+
+		 if (name === 'header-image' && oldValue !== newValue) {
+	      this.setHeadImage(newValue);
+	    }
 	  }
 
 	setHeadTitle(titleText){
 		if(titleText){
 			this.shadowRoot.querySelector("header h1").textContent = titleText;
+		}
+	}
+
+	setHeadImage(imageSrc){
+		if(imageSrc){
+			this.shadowRoot.querySelector("header img").src = imageSrc;
 		}
 	}
 
