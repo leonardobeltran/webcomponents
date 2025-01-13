@@ -3,8 +3,25 @@ export class WCCard extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
-		this.shadowRoot.querySelector("header h1").textContent = this.getAttribute("head-title");
+	
+	this.setHeadTitle(this.getAttribute("header-title"));
+
+	static get observedAttributes() {
+	    return ['header-title', 'header-image'];
+	  }
+	
+	  attributeChangedCallback(name, oldValue, newValue) {
+	    if (name === 'header-title' && oldValue !== newValue) {
+	      this.setHeadTitle(newValue);
+	    }
+	  }
     }
+
+	setHeadTitle(titleText){
+		if(titleText){
+			this.shadowRoot.querySelector("header h1").textContent = titleText;
+		}
+	}
 
 	getTemplate() {
         const styles = `
