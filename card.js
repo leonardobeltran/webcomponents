@@ -3,7 +3,7 @@ export class WCCard extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
-		this.shadowRoot.querySelector("hader h1").textContent = this.getAttribute("head-title");
+		this.shadowRoot.querySelector("header h1").textContent = this.getAttribute("head-title");
     }
 
 	getTemplate() {
