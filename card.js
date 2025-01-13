@@ -7,13 +7,13 @@ export class WCCard extends HTMLElement {
         this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
 	
 	this.setHeadTitle(this.getAttribute("header-title"));
+    }
 
-	  attributeChangedCallback(name, oldValue, newValue) {
+	 attributeChangedCallback(name, oldValue, newValue) {
 	    if (name === 'header-title' && oldValue !== newValue) {
 	      this.setHeadTitle(newValue);
 	    }
 	  }
-    }
 
 	setHeadTitle(titleText){
 		if(titleText){
