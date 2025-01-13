@@ -1,4 +1,6 @@
 export class WCCard extends HTMLElement {
+    static observedAttributes = ['header-title', 'header-image'];
+	
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -6,8 +8,6 @@ export class WCCard extends HTMLElement {
 	
 	this.setHeadTitle(this.getAttribute("header-title"));
 
-	static observedAttributes = ['header-title', 'header-image'];
-	
 	  attributeChangedCallback(name, oldValue, newValue) {
 	    if (name === 'header-title' && oldValue !== newValue) {
 	      this.setHeadTitle(newValue);
