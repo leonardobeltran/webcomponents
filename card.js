@@ -6,9 +6,7 @@ export class WCCard extends HTMLElement {
 	
 	this.setHeadTitle(this.getAttribute("header-title"));
 
-	static get observedAttributes() {
-	    return ['header-title', 'header-image'];
-	  }
+	static observedAttributes = ['header-title', 'header-image'];
 	
 	  attributeChangedCallback(name, oldValue, newValue) {
 	    if (name === 'header-title' && oldValue !== newValue) {
