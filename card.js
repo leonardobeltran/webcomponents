@@ -66,13 +66,8 @@ export class WCCard extends HTMLElement {
 	  font-weight: 500;
 	  margin: 0;
 	  color: #212121;
-	  flex-grow: 1;
 	}
  img {
-	  width: 48px;
-	  height: 48px;
-	  border-radius: 50%;
-	  object-fit: cover;
 	  border: 2px solid #e0e0e0;
 	}
 	}
