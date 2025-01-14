@@ -38,6 +38,7 @@ export class WCCard extends HTMLElement {
 	  border-radius: 8px;
 	  background-color: #ffffff;
 	  color: #333333;
+   	  border: 1px solid #e0e0e0;
 	}
 	
 	article {
