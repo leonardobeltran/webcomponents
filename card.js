@@ -35,18 +35,9 @@ export class WCCard extends HTMLElement {
         const styles = `
         <style>
          :host {
-	  display: block;
-	  font-family: 'Roboto', Arial, sans-serif;
 	  border-radius: 8px;
-	  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06);
-	  overflow: hidden;
 	  background-color: #ffffff;
 	  color: #333333;
-	  transition: box-shadow 0.3s ease;
-	}
-	
-	:host(:hover) {
-	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 6px 12px rgba(0, 0, 0, 0.08);
 	}
 	
 	article {
@@ -54,15 +45,15 @@ export class WCCard extends HTMLElement {
 	  flex-direction: column;
 
    		header {
-	  padding: 16px;
+	  padding: 1em;
 	  background-color: #f5f5f5;
 	  border-bottom: 1px solid #e0e0e0;
 	  display: flex;
 	  flex-direction: column;
-	  gap: 16px;
+	  gap: 1em;
 
    h1 {
-	  font-size: 20px;
+	  font-size: 1.3em;
 	  font-weight: 500;
 	  margin: 0;
 	  color: #212121;
@@ -73,27 +64,26 @@ export class WCCard extends HTMLElement {
 	}
 
  main {
-	  padding: 16px;
-	  font-size: 16px;
-	  line-height: 1.5;
+	  padding: 1em;
+	  font-size: 1em;
+	  line-height: 1.5em;
 	  color: #424242;
 	}
 	
 	footer {
-	  padding: 16px;
+	  padding: 1em;
 	  background-color: #f9f9f9;
 	  border-top: 1px solid #e0e0e0;
 	  display: flex;
 	  justify-content: flex-end;
-	  gap: 8px;
+	  gap: 0.5em;
 
    		&::slotted(button) {
-	  padding: 8px 16px;
-	  font-size: 14px;
+	  padding: 0.5em 1em;
+	  font-size: 0.8em;
 	  border: none;
 	  border-radius: 4px;
 	  cursor: pointer;
-	  transition: background-color 0.3s ease;
 	}
 	}
 	}
