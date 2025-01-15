@@ -1,15 +1,23 @@
 export class WCCard extends HTMLElement {
+  // definir las propiedades que se quieren observar
   static observedAttributes = ["header-title", "header-image"];
 
   constructor() {
     super();
+    // obtener la plantilla y agregarla al shadow dom
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
 
-    this.setHeadTitle(this.getAttribute("header-title"));
-    this.setHeadImage(this.getAttribute("header-image"));
+    //inicizalizar con los atributos que tiene el elemento al definirse
+    if(this.hasAttribute("header-title")){	  
+    	this.setHeadTitle(this.getAttribute("header-title"));
+    }
+    if(this.hasAttribute("header-image")){	  
+    	this.setHeadImage(this.getAttribute("header-image"));
+    }
   }
 
+  //calllback que se ejecuta cuando cambia el valor de los atributos
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === "header-title" && oldValue !== newValue) {
       this.setHeadTitle(newValue);
@@ -35,7 +43,7 @@ export class WCCard extends HTMLElement {
   getTemplate() {
     const styles = `
         <style>
-        /* el host es el contenedor del componente */
+        /* el :host es el contenedor del componente, soporta sintaxis anidada */
         :host {
           font-family: Roboto, Arial, sans-serif;
           border-radius: 8px;
@@ -45,7 +53,7 @@ export class WCCard extends HTMLElement {
           background-color: #fff;
           color: #333;
           display: flex;
-	      flex-direction: column;
+	  flex-direction: column;
           
           header{
             display: flex;
@@ -101,11 +109,12 @@ export class WCCard extends HTMLElement {
     template.innerHTML = `
            <article>
 		  <header>
+    		    <!-- con el atributo part se pueden exteriorizar partes del shadow -->
 		    <h1 part="header-title"></h1>
 		    <img loading="lazy"/>
 		  </header>
 		  <main>
-			<slot name="body"></slot>
+		    <slot name="body"></slot>
 		  </main>
 		  <footer>
 		    <slot name="footer"></slot>
