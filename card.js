@@ -35,17 +35,17 @@ export class WCCard extends HTMLElement {
   getTemplate() {
     const styles = `
         <style>
+        /* el host es el contenedor del componente */
         :host {
-          display: block;
-          font-family: 'Roboto', Arial, sans-serif;
+          font-family: Roboto, Arial, sans-serif;
           border-radius: 8px;
           padding: 1em;
           box-sizing: border-box;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06);
-          background-color: #ffffff;
-          color: #333333;
+          box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 4px 8px rgb(0 0 0 / 6%);
+          background-color: #fff;
+          color: #333;
           display: flex;
-	        flex-direction: column;
+	      flex-direction: column;
           
           header{
             display: flex;
@@ -56,7 +56,7 @@ export class WCCard extends HTMLElement {
               font-size: 1.3em;
               font-weight: 500;
               margin: 0;
-              color: #212121;
+              color: var(--title-color, #212121);
             }
             
             img {
@@ -81,6 +81,18 @@ export class WCCard extends HTMLElement {
             display: flex;
             justify-content: flex-end;
             gap: 0.5em;
+         }
+        }
+        
+        /* ejemplo del pseudo selector slotted (no se puede anidar) */
+        ::slotted(button){
+          background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 0.5em 1em;
+            margin-block: 1em;
+            border-radius: 4px;
+            cursor: pointer;
         }
         </style>
         `;
@@ -89,7 +101,7 @@ export class WCCard extends HTMLElement {
     template.innerHTML = `
            <article>
 		  <header>
-		    <h1></h1>
+		    <h1 part="header-title"></h1>
 		    <img/>
 		  </header>
 		  <main>
