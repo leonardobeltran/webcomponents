@@ -102,7 +102,7 @@ export class WCCard extends HTMLElement {
            <article>
 		  <header>
 		    <h1 part="header-title"></h1>
-		    <img/>
+		    <img loading="lazy"/>
 		  </header>
 		  <main>
 			<slot name="body"></slot>
