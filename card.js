@@ -29,9 +29,7 @@ export class WCCard extends HTMLElement {
   }
 
   setHeadTitle(titleText) {
-    if (titleText) {
       this.shadowRoot.querySelector("header h1").textContent = titleText;
-    }
   }
 
   setHeadImage(imageSrc) {
