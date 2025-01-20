@@ -1,6 +1,9 @@
 export class WCCard extends HTMLElement {
   // definir las propiedades que se quieren observar
-  static observedAttributes = ["header-title", "header-image"];
+  static propertiesAttributes = {
+    headerTitle: 'header-title',
+    headerImage: 'header-image',
+  };
 
   constructor() {
     super();
@@ -15,8 +18,25 @@ export class WCCard extends HTMLElement {
     if(this.hasAttribute("header-image")){	  
     	this.setHeadImage(this.getAttribute("header-image"));
     }
+    
+    // crear getters y setters dinamicamente
+    for (const [property, attribute] of Object.entries(WCCard.propertiesAttributes)) {
+      Object.defineProperty(this, property, {
+        get() {
+          return this.getAttribute(attribute);
+        },
+        set(value) {
+          this.setAttribute(attribute, value);
+        },
+      });
+    }
   }
-
+  
+  //esta propiedad debe ser estatica y con ese nombre para que sea valida la definicion
+  static get observedAttributes() {
+    return Object.values(WCCard.propertiesAttributes);
+  }
+  
   //calllback que se ejecuta cuando cambia el valor de los atributos
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === "header-title" && oldValue !== newValue) {
@@ -28,6 +48,7 @@ export class WCCard extends HTMLElement {
     }
   }
 
+  // funciones utilitarias
   setHeadTitle(titleText) {
       this.shadowRoot.querySelector("header h1").textContent = titleText;
   }
