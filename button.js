@@ -8,7 +8,7 @@ export class WCButton extends HTMLButtonElement {
 
     constructor() {
         super();
-        this.#originalContent = this.textContent;
+        this.#originalContent = this.textContent.trim();
         
         let emoji = this.getAttribute('emoji');
         if(emoji.length > 0){
@@ -23,9 +23,9 @@ export class WCButton extends HTMLButtonElement {
   
     addEmoji(emoji){
       if(emoji.length > 0){
-        emoji = `${emoji} `;
+        emoji = `${ emoji } `;
       }
-      this.innerHTML = `${emoji}${ this.#originalContent}`.trim(); 
+      this.innerHTML = `${ emoji }${ this.#originalContent }`; 
     }
   
     setVariant(variant){
