@@ -1,4 +1,4 @@
-export export class WCButton extends HTMLButtonElement {
+export class WCButton extends HTMLButtonElement {
     #originalContent = "";
     #beforeWaiting = "";
   
